@@ -179,6 +179,8 @@
                         "
                     >
                         <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
+                            
+                            <!-- Navbar menu close button -->
                             <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-label="Close navbar menu"
                                 :aria-expanded="isNavbarMenuOpen ? true : false"
                                 @click="isNavbarMenuOpen = false"
@@ -189,6 +191,8 @@
                                     <path d="M6 6l12 12" />
                                 </svg>
                             </button>
+
+                            <!-- Navbar menu link -->
                             <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
                                 <li>
                                     <a href="#features" class="block font-semibold hover:text-black dark:hover:text-white"
