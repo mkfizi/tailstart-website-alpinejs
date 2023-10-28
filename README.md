@@ -1,4 +1,4 @@
-# Tailstart - Website
+# Tailstart - Website (AlpineJS)
 TailwindCSS website starter kit.
 
 ## Variants
@@ -10,8 +10,9 @@ TailwindCSS website starter kit.
 * [Viewport height mobile browser issue](https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser) fix: Ensures consistent rendering of elements using the `vh` unit across different mobile browsers.
 * Accesibility compliant and best practices: Website is designed with accessibility considerations in mind to provide a better user experience for all users while using best practices.
 * SEO-friendly metadata and social media tags: Includes relevant metadata and tags to optimize the website for search engines and improve social media sharing.
-* Sticky navbar with appearance toggle: Navbar remains fixed at the top of the page, and its appearance dynamically changes based on the user's scrolling position.
+* Sticky navbar with appearance toggle: Navbar remains fixed at the top of the page, and its appearance dynamically changes based on current scroll position.
 * Responsive navbar menu with escape key and focus trap handler: Navbar menu is programmed with proper keyboard navigation and responsive behaviour on all screen sizes.
+* Navbar menu active link toggle: Navbar menu link change appearance based or current scroll position which correspond to current viewed section.
 
 ## Installation
 Clone this repository to get started.
@@ -34,4 +35,4 @@ This starter kit serves as a boilerplate for creating web applications or sites.
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://github.com/mkfizi/tailstart-website-alpinejs/blob/main/LICENSE)
+[MIT](https://github.com/mkfizi/tailstart-website/blob/main/LICENSE)
