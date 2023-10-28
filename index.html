@@ -83,7 +83,11 @@
             isScrolled = window.scrollY > navbarHeight
         "
         :class="isScrolled ? 'border-neutral-200 dark:border-neutral-800' : 'border-transparent dark:border-transparent'"
-        @scroll.window="isScrolled = window.scrollY > navbarHeight"
+        @scroll.window="
+        
+            // Toggle navbar appearance
+            isScrolled = window.scrollY > ($el.offsetHeight - $el.clientHeight);
+        "
     >
         <div class="divide-y divide-neutral-200 dark:divide-neutral-800">
             <div class="flex items-center justify-between w-full h-16 max-w-screen-xl px-4 mx-auto sm:px-8">
@@ -104,14 +108,15 @@
                         x-data="{
                             sections: document.querySelectorAll('section'),
                             isSectionActive: {},
+
+                            // This is to handle when switching view between breakpoint size
                             toggleResponsive: () => {
+
+                                // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
                                 if (window.innerWidth >= breakpointSize) {
-            
-                                    // Close navbar menu when switching view past breakpoint size
                                     if ($el.getAttribute('aria-hidden') === 'true') {
                                         isNavbarMenuOpen = false
                                     }
-            
                                     $el.removeAttribute('aria-hidden');
                                 } else {
                                     if (!$el.getAttribute('aria-hidden')) {
@@ -122,6 +127,8 @@
                         }"
                         x-init="
                             $watch('isNavbarMenuOpen', isNavbarMenuOpen => { 
+
+                                // Force focus on element when `isNavbarMenuOpen` is true
                                 if (isNavbarMenuOpen) {
                                     $el.setAttribute('tabindex', 1);
                                     $el.focus();
@@ -135,6 +142,8 @@
                         "
                         @keydown.escape.window="isNavbarMenuOpen = false"
                         @keydown.tab.window="
+                            
+                            // Focus trap handler 
                             event => {
                                 if (isNavbarMenuOpen) {
                                     const focusableElements = Array.from($el.querySelectorAll(`a, button, input, textarea, select, details, [tabindex], [contenteditable='true']`)).filter(element => {
@@ -155,6 +164,8 @@
                         "
                         @resize.window="toggleResponsive"
                         @scroll.window="
+
+                            // Toggle active navbar menu link
                             const scrollPosition = window.scrollY;
                             sections.forEach((targetSection) => {
                                 const sectionTop = targetSection.offsetTop - navbarHeight - parseFloat(getComputedStyle(targetSection).marginTop);
@@ -207,6 +218,8 @@
                         <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode"
                             x-data="{ isDarkMode: '' }"
                             @click="
+                            
+                                // Toggle dark mode
                                 isDarkMode = localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
                                 localStorage.theme = isDarkMode ? 'dark' : 'light';
                                 document.documentElement.classList.toggle('dark', isDarkMode);
