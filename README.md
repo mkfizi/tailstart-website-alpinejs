@@ -1,5 +1,5 @@
 # Tailstart - Website (AlpineJS)
-TailwindCSS website starter kit.
+TailwindCSS website starter kit in AlpineJS.
 
 ## Variants
 - [Javascript](https://github.com/mkfizi/tailstart-website)
