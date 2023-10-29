@@ -127,7 +127,7 @@
                     x-init="
                         $watch('isNavbarMenuOpen', isNavbarMenuOpen => { 
 
-                            // Force focus on element when `isNavbarMenuOpen` is true
+                            // Force focus before initialize focus trap
                             if (isNavbarMenuOpen) {
                                 $el.setAttribute('tabindex', 1);
                                 $el.focus();
