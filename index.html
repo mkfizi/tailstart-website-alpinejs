@@ -60,24 +60,25 @@
 </head>
 <body class="relative min-h-screen antialiased bg-white dark:bg-neutral-900"
     x-data="{ 
-        navbarHeight: null,
-        isScrolled: false, 
-        isNavbarMenuOpen: false, 
         breakpointSize: 1024
     }"
 >
 
     <!-- Navbar -->
-    <nav class="sticky top-0 z-10 bg-white border-b dark:bg-neutral-900"
+    <nav class="sticky top-0 z-10 bg-white border-b border-transparent dark:border-transparent dark:bg-neutral-900"
+        x-data="{
+            navbarHeight: null,
+            isScrolled: false, 
+            isNavbarMenuOpen: false, 
+        }"
         x-init="
-            navbarHeight = $el.offsetHeight
-            isScrolled = window.scrollY > navbarHeight
+            isScrolled = window.scrollY > 0
         "
         :class="isScrolled ? 'border-neutral-200 dark:border-neutral-800 shadow' : 'border-transparent dark:border-transparent'"
         @scroll.window="
-        
+
             // Toggle navbar appearance
-            isScrolled = window.scrollY > ($el.offsetHeight - $el.clientHeight);
+            isScrolled = window.scrollY > 0;
         "
     >
         <div class="flex items-center justify-between w-full h-16 max-w-screen-xl px-4 mx-auto sm:px-8">
