@@ -63,17 +63,8 @@
         navbarHeight: null,
         isScrolled: false, 
         isNavbarMenuOpen: false, 
-        isSidebarMenuOpen: false, 
-        isPageMenuOpen: false,
         breakpointSize: 1024
     }"
-    @resize.window="
-        if (window.innerWidth >= breakpointSize) {
-            isNavbarMenuOpen = false;
-            isSidebarMenuOpen = false; 
-            isPageMenuOpen = false;
-        }
-    "
 >
 
     <!-- Navbar -->
