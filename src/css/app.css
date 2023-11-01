@@ -931,6 +931,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-px {
   padding-top: 1px;
   padding-bottom: 1px;
@@ -1288,6 +1293,10 @@ body{
     top: auto;
   }
 
+  .lg\:right-8 {
+    right: 2rem;
+  }
+
   .lg\:z-0 {
     z-index: 0;
   }
@@ -1350,8 +1359,14 @@ body{
     background-color: transparent;
   }
 
-  .lg\:p-0 {
-    padding: 0px;
+  .lg\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .lg\:text-left {

@@ -72,7 +72,8 @@
             isNavbarMenuOpen: false, 
         }"
         x-init="
-            isScrolled = window.scrollY > 0
+            navbarHeight = $el.clientHeight;
+            isScrolled = window.scrollY > 0;
         "
         :class="isScrolled ? 'border-neutral-200 dark:border-neutral-800 shadow' : 'border-transparent dark:border-transparent'"
         @scroll.window="
@@ -171,10 +172,10 @@
                     @resize.window="toggleResponsive()"
                     @scroll.window="toggleActiveLink()"
                 >
-                    <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
+                    <div class="fixed top-0 left-0 w-full h-full px-4 py-4 overflow-y-auto bg-white sm:px-8 lg:relative lg:h-auto lg:px-0 lg:py-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
                         
                         <!-- Navbar menu close button -->
-                        <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-label="Close navbar menu"
+                        <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 lg:right-8 top-4 group" aria-controls="navbar-menu" aria-label="Close navbar menu"
                             :aria-expanded="isNavbarMenuOpen ? true : false"
                             @click="isNavbarMenuOpen = false"
                         >
