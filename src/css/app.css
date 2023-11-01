@@ -1222,6 +1222,10 @@ body{
 }
 
 @media (min-width: 640px) {
+  .sm\:right-8 {
+    right: 2rem;
+  }
+
   .sm\:order-2 {
     order: 2;
   }
@@ -1291,10 +1295,6 @@ body{
 
   .lg\:top-auto {
     top: auto;
-  }
-
-  .lg\:right-8 {
-    right: 2rem;
   }
 
   .lg\:z-0 {
