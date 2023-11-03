@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart - Website (AlpineJS) v0.1.0: app.js
+ * Tailstart - Website (AlpineJS) v0.1.1: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-website-alpinejs/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,7 +11,7 @@
     const app = {};
 
     app.name = 'Tailstart - Website (AlpineJS)';
-    app.version = '0.1.0';
+    app.version = '0.1.1';
 
     app.element = {
         footerCurrentYear: document.getElementById('footer-year'),
