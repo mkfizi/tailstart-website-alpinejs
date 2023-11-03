@@ -18,5 +18,9 @@ Put unreleased changes here.
 
 * First release.
 ## [0.1.0] - 2023-10-28
+### Changed
+- Change link colours to `neutral-500` for light mode.
+
+## [0.1.0] - 2023-10-28
 ### Added
 * First release.
