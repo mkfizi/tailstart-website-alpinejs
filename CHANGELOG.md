@@ -17,9 +17,10 @@ Types of changes:
 Put unreleased changes here.
 
 * First release.
-## [0.1.0] - 2023-10-28
+## [0.1.1] - 2023-11-08
 ### Changed
 - Change link colours to `neutral-500` for light mode.
+- Implement `x-for` on navbar links, features and pricings.
 
 ## [0.1.0] - 2023-10-28
 ### Added
