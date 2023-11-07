@@ -209,7 +209,8 @@
                         >
                             <template x-for="link in links">
                                 <li>
-                                    <a :href="`#${link.url}`" class="block font-semibold hover:text-black dark:hover:text-white"
+                                    <a class="block font-semibold hover:text-black dark:hover:text-white"
+                                        :href="`#${link.url}`" 
                                         :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
                                         x-text="link.title"
                                     ></a>
