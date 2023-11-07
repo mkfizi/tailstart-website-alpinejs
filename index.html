@@ -95,7 +95,9 @@
 
                 <!-- Navbar menu -->
                 <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0"
-                    :class="{ 'hidden invisible': !isNavbarMenuOpen }"
+                    :class="{ 
+                        'hidden invisible': !isNavbarMenuOpen 
+                    }"
                     :aria-hidden="isNavbarMenuOpen ? false : true"
                     x-data="{
                         sections: document.querySelectorAll('section'),
@@ -187,22 +189,32 @@
                         </button>
 
                         <!-- Navbar menu link -->
-                        <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
-                            <li>
-                                <a href="#features" class="block font-semibold hover:text-black dark:hover:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Features</a>
-                            </li>
-                            <li>
-                                <a href="#pricings" class="block font-semibold hover:text-black dark:hover:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Pricings</a>
-                            </li>
-                            <li>
-                                <a href="#contact" class="block font-semibold hover:text-black dark:hover:text-white"
-                                    :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
-                                >Contact</a>
-                            </li>
+                        <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8"
+                            x-data="{
+                                links: [
+                                    { 
+                                        url: 'features', 
+                                        title: 'Features'
+                                    },
+                                    { 
+                                        url: 'pricings', 
+                                        title: 'Pricings'
+                                    },
+                                    { 
+                                        url: 'contact', 
+                                        title: 'Contact'
+                                    },
+                                ]
+                            }"
+                        >
+                            <template x-for="link in links">
+                                <li>
+                                    <a :href="`#${link.url}`" class="block font-semibold hover:text-black dark:hover:text-white"
+                                        :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
+                                        x-text="link.title"
+                                    ></a>
+                                </li>
+                            </template>
                         </ul>
 
                     </div>
@@ -279,70 +291,68 @@
         </header>
         
         <!-- Features section -->
-        <section id="features" class="max-w-screen-lg pt-32 mx-auto">
+        <section id="features" class="max-w-screen-lg pt-32 mx-auto"
+            x-data="{
+                features: [
+                    {
+                        icon: `<svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6 stroke-black dark:stroke-white' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M4 4h6v8h-6z' />
+                                    <path d='M4 16h6v4h-6z' />
+                                    <path d='M14 12h6v8h-6z' />
+                                    <path d='M14 4h6v4h-6z' />
+                                </svg>`,
+                        title: 'Versatile Boilerplates',
+                        description: 'Flexible and comprehensive starting point boilerplates for all web development needs.'
+                    },
+                    {
+                        icon: `<svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6 stroke-black dark:stroke-white' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5' />
+                                    <path d='M12 12l8 -4.5' />
+                                    <path d='M12 12l0 9' />
+                                    <path d='M12 12l-8 -4.5' />
+                                </svg>`,
+                        title: 'Integrated Scalability',
+                        description: 'Seamless integration with popular frameworks, libraries and technologies.'
+                    },
+                    {
+                        icon: `<svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6 stroke-black dark:stroke-white' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z' />
+                                    <path d='M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9' />
+                                    <path d='M16 9h2' />
+                                </svg>`,
+                        title: 'Responsive Design',
+                        description: 'Optimized mobile first approach design to adapt layout with different screen sizes.'
+                    },
+                    {
+                        icon: `<svg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6 stroke-black dark:stroke-white' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0' />
+                                    <path d='M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1' />
+                                    <circle cx='12' cy='7.5' r='.5' fill='currentColor' />
+                                </svg>`,
+                        title: 'Accessibility Compliant',
+                        description: 'Web content is user friendly and meet accessiblity standards with best practices.'
+                    },
+                ]
+            }"
+        >
             <div class="text-center">
                 <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Features</h3>
                 <p class="mt-2 text-lg text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Empower and accelerate development workflow.</p>
             </div>
             <div class="grid gap-8 mt-16 sm:gap-16 sm:grid-cols-2">
-                <div class="flex gap-8">
-                    <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 4h6v8h-6z" />
-                            <path d="M4 16h6v4h-6z" />
-                            <path d="M14 12h6v8h-6z" />
-                            <path d="M14 4h6v4h-6z" />
-                        </svg>
+                <template x-for="feature in features">
+                    <div class="flex gap-8">
+                        <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700" x-html="feature.icon"></div>
+                        <div>
+                            <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white" x-text="feature.title"></p>
+                            <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300" x-text="feature.description"></p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Versatile Boilerplates</p>
-                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Flexible and comprehensive starting point boilerplates for all web development needs.</p>
-                    </div>
-                </div>
-                <div class="flex gap-8">
-                    <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-                            <path d="M12 12l8 -4.5" />
-                            <path d="M12 12l0 9" />
-                            <path d="M12 12l-8 -4.5" />
-                          </svg>
-                    </div>
-                    <div>
-                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Integrated Scalability</p>
-                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Seamless integration with popular frameworks, libraries and technologies.</p>
-                    </div>
-                </div>
-                <div class="flex gap-8">
-                    <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z" />
-                            <path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9" />
-                            <path d="M16 9h2" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Responsive Design</p>
-                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Optimized mobile first approach design to adapt layout with different screen sizes.</p>
-                    </div>
-                </div>
-                <div class="flex gap-8">
-                    <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                            <path d="M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1" />
-                            <circle cx="12" cy="7.5" r=".5" fill="currentColor" />
-                          </svg>
-                    </div>
-                    <div>
-                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Accessibility Compliant</p>
-                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Web content is user friendly and meet accessiblity standards with best practices.</p>
-                    </div>
-                </div>
+                </template>
             </div>
         </section>
 
@@ -358,42 +368,26 @@
                         <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Personal</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">FREE</p>
-                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">1 website license</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Basic plugins</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Standard analytic tracking</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Limited support</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Credit to author is required</p>
-                        </li>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300"
+                        x-data="{
+                            details: [
+                                '1 website license',
+                                'Basic plugins',
+                                'Standard analytic tracking',
+                                'Limited support',
+                                'Credit to author is required',
+                            ]
+                        }"
+                    >
+                        <template x-for="detail in details">
+                            <li class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                                  </svg>
+                                <p class="text-base text-neutral-700 dark:text-neutral-300" x-text="detail"></p>
+                            </li>
+                        </template>
                     </ul>
                     <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
@@ -402,42 +396,26 @@
                         <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Teams</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">$99</p>
-                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">10 websites license</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Advance plugins</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Advance analytic tracking</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Email and call support</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">No credit to author is required</p>
-                        </li>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300"
+                        x-data="{
+                            details: [
+                                '10 website licenses',
+                                'Advance plugins',
+                                'Advance analytic tracking',
+                                'Email and call support',
+                                'No credit to author is required',
+                            ]
+                        }"
+                    >
+                        <template x-for="detail in details">
+                            <li class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                                  </svg>
+                                <p class="text-base text-neutral-700 dark:text-neutral-300" x-text="detail"></p>
+                            </li>
+                        </template>
                     </ul>
                     <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
@@ -446,42 +424,26 @@
                         <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Business</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">$199</p>
-                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Unlimited websites license</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Custom plugins</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Specialized analytic tracking</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Priority support</p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
-                              </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Entitled for showcase</p>
-                        </li>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300"
+                        x-data="{
+                            details: [
+                                'Unlimited website licenses',
+                                'Custom plugins',
+                                'Specialized analytic tracking',
+                                'Priority support',
+                                'Entitled for showcase',
+                            ]
+                        }"
+                    >
+                        <template x-for="detail in details">
+                            <li class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                                  </svg>
+                                <p class="text-base text-neutral-700 dark:text-neutral-300" x-text="detail"></p>
+                            </li>
+                        </template>
                     </ul>
                     <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
