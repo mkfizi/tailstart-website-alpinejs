@@ -193,15 +193,15 @@
                             x-data="{
                                 links: [
                                     { 
-                                        url: 'features', 
+                                        url: '#features', 
                                         title: 'Features'
                                     },
                                     { 
-                                        url: 'pricings', 
+                                        url: '#pricings', 
                                         title: 'Pricings'
                                     },
                                     { 
-                                        url: 'contact', 
+                                        url: '#contact', 
                                         title: 'Contact'
                                     }
                                 ]
@@ -210,7 +210,7 @@
                             <template x-for="link in links">
                                 <li>
                                     <a class="block font-semibold hover:text-black dark:hover:text-white"
-                                        :href="`#${link.url}`" 
+                                        :href="link.url`" 
                                         :class="isSectionActive[`${$el.getAttribute('href').substring(1)}`] ? 'text-black dark:text-white' : 'text-neutral-500 dark:text-neutral-400'"
                                         x-text="link.title"
                                     ></a>
