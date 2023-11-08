@@ -207,7 +207,7 @@
                                 ]
                             }"
                         >
-                            <template x-for="link in links">
+                            <template x-for="link in links" hidden>
                                 <li>
                                     <a class="block font-semibold hover:text-black dark:hover:text-white"
                                         :href="link.url" 
@@ -345,7 +345,7 @@
                 <p class="mt-2 text-lg text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Empower and accelerate development workflow.</p>
             </div>
             <div class="grid gap-8 mt-16 sm:gap-16 sm:grid-cols-2">
-                <template x-for="feature in features">
+                <template x-for="feature in features" hidden>
                     <div class="flex gap-8">
                         <div class="self-center p-4 rounded-md bg-neutral-200 dark:bg-neutral-700" x-html="feature.icon"></div>
                         <div>
@@ -380,7 +380,7 @@
                             ]
                         }"
                     >
-                        <template x-for="detail in details">
+                        <template x-for="detail in details" hidden>
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -408,7 +408,7 @@
                             ]
                         }"
                     >
-                        <template x-for="detail in details">
+                        <template x-for="detail in details" hidden>
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -436,7 +436,7 @@
                             ]
                         }"
                     >
-                        <template x-for="detail in details">
+                        <template x-for="detail in details" hidden>
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
